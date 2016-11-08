@@ -157,15 +157,16 @@ export default class MovieListPage extends Component {
   constructor(props) {
     super(props);
 
-    const dataSource = ListView.DataSource({rowHasChanged: (movie1, movie2) => movie1.imdbId !== movie2.imdbId});
+    const dataSource = new ListView.DataSource({rowHasChanged: (movie1, movie2) => movie1.imdbId !== movie2.imdbId});
     this.state = {
       dataSource: dataSource.cloneWithRows(movieData)
     };
   }
 
   _renderMovieListItem = (movie) => {
+    console.log(movie);
     return (
-      <View>
+      <View style={styles.movieItem}>
         <Text>{movie.title}</Text>
         <Text>{movie.releaseYear}</Text>
       </View>
@@ -177,7 +178,18 @@ export default class MovieListPage extends Component {
       <ListView
         dataSource={this.state.dataSource}
         renderRow={this._renderMovieListItem}
+        style={styles.listView}
       />
     )
   }
 }
+
+
+const styles = StyleSheet.create({
+  listView: {
+    flex: 1
+  },
+  movieItem: {
+    flex: 1
+  }
+});

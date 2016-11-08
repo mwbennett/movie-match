@@ -57,7 +57,9 @@ export default class LoggedIn extends Component {
             onPress={this._onChangeTab.bind(null, this.TABS.list)}
             style={styles.tabBarItem}
           >
-            <MovieListPage />
+            <MovieListPage 
+              style={styles.pageWrapper}
+            />
           </Icon.TabBarItemIOS>
           <Icon.TabBarItemIOS
             title='Friends'
@@ -67,7 +69,7 @@ export default class LoggedIn extends Component {
             onPress={this._onChangeTab.bind(null, this.TABS.friends)}
             style={styles.tabBarItem}
           >
-            <Text style={styles.content}>Friends</Text>
+            <Text style={[styles.pageWrapper, styles.content]}>Friends</Text>
           </Icon.TabBarItemIOS>
           <Icon.TabBarItemIOS
             title='Watch'
@@ -77,7 +79,7 @@ export default class LoggedIn extends Component {
             onPress={this._onChangeTab.bind(null, this.TABS.watch)}
             style={styles.tabBarItem}
           >
-            <Text style={styles.content}>Watch</Text>
+            <Text style={[styles.pageWrapper, styles.content]}>Watch</Text>
           </Icon.TabBarItemIOS>
           <Icon.TabBarItemIOS
             title='Search'
@@ -87,7 +89,7 @@ export default class LoggedIn extends Component {
             onPress={this._onChangeTab.bind(null, this.TABS.search)}
             style={styles.tabBarItem}
           >
-            <Text style={styles.content}>Search</Text>
+            <Text style={[styles.pageWrapper, styles.content]}>Search</Text>
           </Icon.TabBarItemIOS>
         </TabBarIOS>
       </View>
@@ -98,10 +100,10 @@ export default class LoggedIn extends Component {
 const styles = StyleSheet.create({
   viewContainer: {
     flex: 1,
-    flexDirection: 'row'
   },
   tabBar: {
     flex: 1,
+    flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
@@ -112,5 +114,9 @@ const styles = StyleSheet.create({
   content: {
     height: 100,
     width: 100,
-  }
+  },
+  pageWrapper: {
+    flex: 1,
+    paddingTop: 22,
+  },
 });
